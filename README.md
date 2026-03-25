@@ -32,5 +32,18 @@ Este proyecto fue desarrollado aplicando conceptos fundamentales de la programac
 - Programación Orientada a Objetos (POO)
 
 ## Objetivo del juego
+El objetivo es simple y el cual es sobrevivir el mayor tiempo posible evitando chocar con otros autos y lograr la mayor puntuación posible.
 
-El objetivo es simple: sobrevivir el mayor tiempo posible evitando chocar con otros autos y lograr la mayor puntuación posible.
+
+# Javier Durán
+## Vida extra cuando el vehiculo choque 
+En el juego se implementó un sistema de vidas para evitar que el jugador pierda inmediatamente al primer choque y así mejorar la experiencia de juego,el jugador inicia con 2 vidas (`vidas = 2`). Cada vez que ocurre una colisión con un obstáculo, se reduce una vida: vidas--;
+
+Esto permite que el jugador tenga una oportunidad adicional para continuar jugando después de cometer un error, cuando el jugador choca y aún le queda al menos una vida, el juego no termina. En lugar de eso:
+
+- Se muestra cuántas vidas le quedan
+- El carro se reposiciona en un carril seguro
+- Se eliminan los obstáculos actuales para evitar choques inmediatos
+- Se activa una pequeña invulnerabilidad temporal
+
+Esto se hizo para darle al jugador un momento de recuperación y evitar que pierda otra vida de forma instantánea, sin embargo, cuando las vidas llegan a ser menores a 1, el juego termina (Game Over), ya que el jugador ha agotado todas sus oportunidades , el sistema de vidas se implementó para hacer el juego más justo, menos frustrante y permitir que el jugador pueda continuar después de un error.
