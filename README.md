@@ -1,6 +1,6 @@
 # Brick-Car-Grupo1
 ## Nombres de integrantes
--Javier Isidro Durán Villanueva
+-Javier Isidro Durán Villanueva*
 -Eduardo Benjamin Sanchez Mejia
 -Diego Antonio Guerrero castellanos
 -Cesar Ulises Campos
@@ -47,3 +47,19 @@ Esto permite que el jugador tenga una oportunidad adicional para continuar jugan
 - Se activa una pequeña invulnerabilidad temporal
 
 Esto se hizo para darle al jugador un momento de recuperación y evitar que pierda otra vida de forma instantánea, sin embargo, cuando las vidas llegan a ser menores a 1, el juego termina (Game Over), ya que el jugador ha agotado todas sus oportunidades , el sistema de vidas se implementó para hacer el juego más justo, menos frustrante y permitir que el jugador pueda continuar después de un error.
+
+## Controles
+- Flecha izquierda: mover el carro a la izquierda
+- Flecha derecha: mover el carro a la derecha
+
+
+<img width="963" height="834" alt="gamecontroller" src="https://github.com/user-attachments/assets/91c0e6e7-73e2-4ec1-bed2-c2a529e29f98" />
+
+
+
+
+
+## Principios de Programación Orientada a Objetos aplicados
+De primero se implementa el **encapsulamiento**, evidenciado en la clase GameController, donde se centraliza la lógica del juego y el manejo del estado interno. Variables como `vidas`, `invulnerableFrames` y la lista de obstáculos (`obstacles`) se mantienen como atributos internos de la clase, restringiendo su acceso directo desde el exterior; La manipulación de estos datos se realiza únicamente a través de métodos definidos, como el decremento de vidas dentro del método `tick()` y el acceso controlado mediante getters como `getVidas()`. Esto garantiza la integridad de los datos y evita efectos secundarios no deseados.
+
+Se aplica el principio de **abstracción**, al modelar entidades del juego como `modelPlayerCar`, `modelObstacle` y `modelGameState`. Cada una de estas clases representa una entidad del dominio con responsabilidades específicas, ocultando la complejidad interna de su implementación. Por ejemplo, el sistema de colisiones se reduce a la invocación del método `collidesWith()`, sin necesidad de conocer los detalles de cómo se calcula la intersección entre objetos.
