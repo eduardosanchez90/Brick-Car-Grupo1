@@ -1,0 +1,61 @@
+
+
+Nuevo tipo de obstáculo o enemigo con comportamiento diferente:
+
+
+
+// Generar obstáculo
+        spawnTick++;
+        if (spawnTick >= 55 && obstacles.size() < 3) {
+            spawnTick = 0;
+
+            int cantidad = rng.nextInt(2) + 1;
+            int primerCarril = rng.nextInt(modelPlayerCar.LANES);
+
+// elegir si es carro o camión
+int tipo1 = rng.nextInt(3) == 0 ? modelObstacle.TYPE_TRUCK : modelObstacle.TYPE_CAR;
+
+obstacles.add(new modelObstacle(primerCarril, state.getObstacleSpeed(), tipo1));
+
+            if (cantidad == 2) {
+                ArrayList<Integer> carrilesValidos = new ArrayList<>();
+                for (int i = 0; i < modelPlayerCar.LANES; i++) {
+                    if (Math.abs(i - primerCarril) > 1) {
+                        carrilesValidos.add(i);
+                    }
+                }
+
+Primero, spawnTick va aumentando en cada ciclo del juego. Esto sirve como un contador para saber cuándo generar nuevos obstáculos. Cuando ese contador llega a 55 y además hay menos de 3 obstáculos en pantalla, se genera uno nuevo y el contador se reinicia a 0.
+
+Luego se decide cuántos obstáculos van a aparecer, puede ser 1 o 2 de forma aleatoria. Después se elige un carril al azar donde aparecerá el primer obstáculo.
+
+También se decide el tipo de obstáculo: hay una probabilidad de 1 en 3 de que sea un camión, y si no, será un carro.
+
+Ese primer obstáculo se agrega a la lista con su carril, su velocidad (tomada del estado del juego) y su tipo.
+
+Si el programa decide generar dos obstáculos, entonces crea una lista de carriles válidos para el segundo. Recorre todos los carriles y solo guarda aquellos que no están cerca del primer carril (es decir, que tengan una diferencia mayor a 1). Esto se hace para evitar que los obstáculos queden muy juntos y sea imposible esquivarlos.
+
+En resumen, este código controla cuándo aparecen los obstáculos, cuántos aparecen, en qué carril salen y evita que se generen en posiciones injustas para el jugador.
+
+
+private void drawObstacles(Graphics g) {
+    for (modelObstacle o : ctrl.getObstacles()) {
+        if (o.getType() == modelObstacle.TYPE_TRUCK) {
+            drawTruck(g, o.getX(), o.getY(), o.getW(), o.getH());
+        } else {
+            drawCar(g, o.getX(), o.getY(), o.getW(), o.getH(), new Color(200, 60, 60));
+        }
+    }
+}
+
+
+
+Este método drawObstacles se encarga de dibujar todos los obstáculos que hay en el juego.
+
+Primero recorre la lista de obstáculos usando un for. Esa lista viene del controlador (ctrl.getObstacles()), que contiene todos los carros y camiones que están actualmente en pantalla.
+
+En cada vuelta del ciclo toma un obstáculo (o) y revisa qué tipo es.
+
+Si el tipo del obstáculo es un camión (TYPE_TRUCK), entonces llama al método drawTruck, pasándole su posición (X, Y) y su tamaño (ancho y alto). Esto dibuja un camión en pantalla.
+
+Si no es camión, entonces significa que es un carro. En ese caso llama al método drawCar, también con su posición y tamaño, y además le pasa un color
