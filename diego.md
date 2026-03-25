@@ -38,16 +38,23 @@ funcion de **R**
 Se agregó un sistema que calcula y muestra la distancia total recorrida por el jugador al momento de perder.
 
 Esta distancia se muestra en la pantalla de **Game Over**, permitiendo al jugador ver su desempeño en cada partida.
+
 private void drawGameOver(Graphics g) {
+
         g.setColor(new Color(0,0,0,160));
+        
         g.fillRect(0,0,W,H);
+        
         g.setColor(Color.WHITE);
+        
         g.setFont(new Font("Arial", Font.BOLD, 30));
+        
         g.drawString("GAME OVER :)", 100, 300);
+        
          g.setFont(new Font("Arial", Font.PLAIN, 20));
     
-    //Diego
     g.drawString("Presiona R para reiniciar crack ", 80, 500);
+    
      g.drawString("Distancia: " + ctrl.getState().getDistance(), 130, 400);
     }.
 
