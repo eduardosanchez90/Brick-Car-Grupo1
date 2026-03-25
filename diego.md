@@ -9,10 +9,11 @@ Mi aporte al proyecto consistió en mejorar la experiencia del jugador al moment
 Se implementó la opción de reiniciar el juego presionando la tecla **R** después de que el jugador pierde.
 
 Esto permite que el usuario no tenga que cerrar y volver a ejecutar el programa, haciendo el juego más dinámico y fácil de volver a intentar.
-if (e.getKeyCode() == KeyEvent.VK_R) ctrl.resetGame();.
+//if (e.getKeyCode() == KeyEvent.VK_R) ctrl.resetGame();.
 
 funcion de **R**
- public void resetGame() {
+
+ //public void resetGame() {
     // Reiniciar estado
     state = new modelGameState();
 
