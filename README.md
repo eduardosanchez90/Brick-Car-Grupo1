@@ -58,6 +58,11 @@ como se ve aqui podemos apreciiar lo de las vidas definiendo cuantas vidas tendr
 
 De primero se implementa el **encapsulamiento**, evidenciado en la clase GameController, donde se centraliza la lógica del juego y el manejo del estado interno. Variables como `vidas`, `invulnerableFrames` y la lista de obstáculos (`obstacles`) se mantienen como atributos internos de la clase, restringiendo su acceso directo desde el exterior; La manipulación de estos datos se realiza únicamente a través de métodos definidos, como el decremento de vidas dentro del método `tick()` y el acceso controlado mediante getters como `getVidas()`. Esto garantiza la integridad de los datos y evita efectos secundarios no deseados.
 
+<img width="1113" height="734" alt="gamecontroller3" src="https://github.com/user-attachments/assets/311a4160-b5ae-4a78-9d12-91ba1418ebe4" />
+Como podemos ver aquí tenemos lo de colisión del jugador junto también lo que agregamos más q fue de vida extra,en este caso tenemos lo de game over, lo q tenemos un timer.stop q este nos ayudara a parar el juego cuando ya no tengamos esa vida extra,por otro lado tenemos de +1 vida,ocupamos un else como condición q si choca  que aparezca un cuadro indicando q le quedan una,de eso también la vulnerabilidad para no chocar y obstacles.clear q es para limpiar los abstaculos 
 
+Y tenemos times.start q es para reanudar cuando le demos aceptar.
 
 Se aplica el principio de **abstracción**, al modelar entidades del juego como `modelPlayerCar`, `modelObstacle` y `modelGameState`. Cada una de estas clases representa una entidad del dominio con responsabilidades específicas, ocultando la complejidad interna de su implementación. Por ejemplo, el sistema de colisiones se reduce a la invocación del método `collidesWith()`, sin necesidad de conocer los detalles de cómo se calcula la intersección entre objetos.
+
+Tambien ocupamos polimorfismo en este codigo
