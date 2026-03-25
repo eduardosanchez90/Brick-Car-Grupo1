@@ -1,7 +1,7 @@
 # Diego Antonio Guerrero Castellanos
 
 ## Descripción
-Mi aporte al proyecto consistió en mejorar la experiencia del jugador al momento de perder, agregando un sistema de reinicio del juego y mostrando la distancia recorrida.
+Mi aporte al proyecto consistió en mejorar la experiencia del jugador al momento de perder, agregando un sistema de reinicio del juego y mostrando la distancia recorrida y el game over.
 
 ## Funcionalidades implementadas
 
