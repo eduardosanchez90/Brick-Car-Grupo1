@@ -1,0 +1,71 @@
+Mejora visual del HUD (nivel, velocidad, récord o porcentaje de progreso)
+
+public GamePanel() {
+        setLayout(new BorderLayout());
+        setBackground(Color.DARK_GRAY);
+        ctrl      = new GameController(this);
+        roadPanel = new RoadPanel(ctrl);
+
+        JPanel hud = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 6));
+        hud.setBackground(new Color(30, 30, 30));
+        distLabel  = new JLabel("DISTANCIA: 0 m");
+        speedLabel = new JLabel("VELOCIDAD: 4");
+        distLabel.setForeground(Color.WHITE);
+        speedLabel.setForeground(Color.YELLOW);
+        distLabel.setFont(new Font("Arial", Font.BOLD, 15));
+        speedLabel.setFont(new Font("Arial", Font.BOLD, 15));
+        hud.add(distLabel); hud.add(speedLabel);
+
+        add(roadPanel, BorderLayout.CENTER);
+        add(hud, BorderLayout.SOUTH);
+        addKeyListener(new ControllerKeyHandler(ctrl));
+        setFocusable(true);
+    }
+    @Override
+    public void repaint() {
+        super.repaint();
+        if (distLabel != null && ctrl != null) {
+            distLabel.setText("DISTANCIA: " + ctrl.getState().getDistance() + " m");
+            speedLabel.setText("VELOCIDAD: " + ctrl.getState().getObstacleSpeed());
+        }
+        if (roadPanel != null) roadPanel.repaint();
+    }
+
+Este código corresponde al panel principal del juego, donde se arma toda la interfaz y se actualiza la pantalla.
+
+Primero, en el constructor GamePanel():
+
+Se define el diseño del panel usando BorderLayout, lo que permite colocar elementos en posiciones como centro y abajo. También se pone un fondo gris oscuro.
+
+Luego se crea el controlador del juego (GameController), que es el que maneja la lógica (movimiento, obstáculos, etc.). Después se crea el roadPanel, que es donde se dibuja la carretera y todo lo visual del juego.
+
+Después se crea el panel hud, que es la barra de información que aparece abajo. Este usa un FlowLayout alineado a la izquierda con espacios entre elementos. Se le pone un fondo oscuro.
+
+Se crean dos etiquetas:
+
+Una para la distancia (“DISTANCIA: 0 m”)
+Otra para la velocidad (“VELOCIDAD: 4”)
+
+A estas etiquetas se les cambia el color (blanco y amarillo) y la fuente (Arial en negrita) para que se vean mejor.
+
+Luego se agregan esas etiquetas al hud.
+
+Después se agregan los componentes a la pantalla:
+
+El roadPanel va al centro (donde ocurre el juego)
+El hud va abajo (como barra de información)
+
+También se agrega un KeyListener (ControllerKeyHandler) para detectar las teclas del jugador, y se activa setFocusable(true) para que el panel pueda recibir esas entradas.
+
+Luego, en el método repaint():
+
+Este método se encarga de actualizar la pantalla constantemente.
+
+Primero llama a super.repaint() para que Java redibuje la ventana.
+
+Después actualiza los textos de las etiquetas:
+
+La distancia se obtiene del estado del juego
+La velocidad también se obtiene del estado
+
+Por último, manda a redibujar el roadPanel, lo que hace que se actualicen los gráficos del juego (carretera, obstáculos, etc.).
